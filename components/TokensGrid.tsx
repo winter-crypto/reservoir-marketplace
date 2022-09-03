@@ -180,6 +180,7 @@ const TokensGrid: FC<Props> = ({ tokens, viewRef, collectionImage }) => {
                       )}
                     </div>
                   </div>
+                  
                   {token.floorAskPrice != null &&
                     token.floorAskPrice != undefined && (
                       <div className="grid grid-cols-2">
@@ -220,12 +221,11 @@ const TokensGrid: FC<Props> = ({ tokens, viewRef, collectionImage }) => {
                           <button
                             disabled={isInTheWrongNetwork}
                             onClick={() => {
-                              console.log('ENTER ADD TO CART')
                               setCartTokens([...cartTokens, token])
                             }}
                             className="reservoir-subtitle flex h-[40px] items-center justify-center border-t border-neutral-300 disabled:cursor-not-allowed dark:border-neutral-600"
                           >
-                            Add to Cart BLARG
+                            Add to Cart
                           </button>
                         )}
                       </div>

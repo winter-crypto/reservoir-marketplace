@@ -5,7 +5,6 @@ import { useSigner } from 'wagmi'
 import { GlobalContext } from 'context/GlobalState'
 import { BuyModal } from '@reservoir0x/reservoir-kit-ui'
 import { useSwitchNetwork } from 'wagmi'
-import WinterCheckout from './WinterCheckout'
 
 const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID
 
@@ -55,8 +54,8 @@ const BuyNow: FC<Props> = ({
     forSale =
       data.token.floorAskPrice != null && data.token.floorAskPrice != undefined
   }
-  console.log('HELLO BUY NOW CLICKED4')
-  const trigger = <button className={buttonClassName}>Buy Now POOOP</button>
+
+  const trigger = <button className={buttonClassName}>Buy Now</button>
 
   if (!forSale) {
     return null
