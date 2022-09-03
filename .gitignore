@@ -42,4 +42,3 @@ yarn-error.log*
 .idea/modules.xml
 .idea/reservoir-marketplace.iml
 .idea/vcs.xml
-package-lock.json
