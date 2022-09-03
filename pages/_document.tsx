@@ -47,6 +47,7 @@ const MyDocument = function () {
       <meta name="twitter:description" content={META_DESCRIPTION} />
       <meta name="twitter:site" content={META_TWITTER_USERNAME} />
 
+      
       {/* OG - https://ogp.me/ */}
       {/* https://www.opengraph.xyz/ */}
       {/* should be between 30-60 characters, with a maximum of 90 */}
