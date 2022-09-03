@@ -180,6 +180,7 @@ const TokensGrid: FC<Props> = ({ tokens, viewRef, collectionImage }) => {
                       )}
                     </div>
                   </div>
+                  
                   {token.floorAskPrice != null &&
                     token.floorAskPrice != undefined && (
                       <div className="grid grid-cols-2">
