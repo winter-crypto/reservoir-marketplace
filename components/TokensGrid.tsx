@@ -14,6 +14,7 @@ import { recoilTokensMap } from './CartMenu'
 import { useAccount, useNetwork, useSigner } from 'wagmi'
 import BuyNow from 'components/BuyNow'
 import { useReservoirClient } from '@reservoir0x/reservoir-kit-ui'
+import WinterCheckout from './WinterCheckout'
 
 const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID
 const SOURCE_ICON = process.env.NEXT_PUBLIC_SOURCE_ICON
@@ -46,6 +47,7 @@ const TokensGrid: FC<Props> = ({ tokens, viewRef, collectionImage }) => {
   const { data, error, mutate } = tokens
   const account = useAccount()
   const reservoirClient = useReservoirClient()
+  const [showWinterModal, setShowWinterModal] = useState(false)
 
   // Reference: https://swr.vercel.app/examples/infinite-loading
   const mappedTokens = data ? data.flatMap(({ tokens }) => tokens) : []
@@ -75,6 +77,11 @@ const TokensGrid: FC<Props> = ({ tokens, viewRef, collectionImage }) => {
       className="masonry-grid"
       columnClassName="masonry-grid_column"
     >
+      <WinterCheckout
+        showModal={showWinterModal}
+        projectId= '102'
+        production={false}
+      />
       {isLoadingInitialData
         ? Array(10)
             .fill(null)
@@ -182,6 +189,10 @@ const TokensGrid: FC<Props> = ({ tokens, viewRef, collectionImage }) => {
                             <BuyNow
                               data={{
                                 token: token,
+                              }}
+                              onClick={() => {
+                                console.log('ENTER ADD TO CART')
+                                setShowWinterModal(true)
                               }}
                               mutate={mutate}
                               signer={signer}

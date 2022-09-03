@@ -23,6 +23,7 @@ type Props = {
   signer: ReturnType<typeof useSigner>['data']
   buttonClassName?: string
   mutate?: SWRResponse['mutate']
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const BuyNow: FC<Props> = ({
@@ -31,6 +32,7 @@ const BuyNow: FC<Props> = ({
   signer,
   buttonClassName = 'btn-primary-fill w-full',
   mutate,
+  onClick,
 }) => {
   const { dispatch } = useContext(GlobalContext)
   const { switchNetworkAsync } = useSwitchNetwork({
@@ -65,32 +67,18 @@ const BuyNow: FC<Props> = ({
     <button
       className={buttonClassName}
       disabled={isInTheWrongNetwork && !switchNetworkAsync}
-      onClick={async () => {
-        if (isInTheWrongNetwork && switchNetworkAsync && CHAIN_ID) {
-          const chain = await switchNetworkAsync(+CHAIN_ID)
-          if (chain.id !== +CHAIN_ID) {
-            return false
-          }
-        }
-
-        if (!signer) {
-          dispatch({ type: 'CONNECT_WALLET', payload: true })
-        }
-      }}
+      onClick={onClick}
     >
       Buy Now
     </button>
   ) : (
-    <BuyModal
-      trigger={trigger}
-      tokenId={tokenId}
-      collectionId={collectionId}
-      onClose={() => {
-        if (mutate) {
-          mutate()
-        }
-      }}
-    />
+    <button
+      className={buttonClassName}
+      disabled={isInTheWrongNetwork && !switchNetworkAsync}
+      onClick={onClick}
+    >
+      Buy Now
+    </button>
   )
 }
 
