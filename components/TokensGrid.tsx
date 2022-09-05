@@ -48,6 +48,8 @@ const TokensGrid: FC<Props> = ({ tokens, viewRef, collectionImage }) => {
   const account = useAccount()
   const reservoirClient = useReservoirClient()
   const [showWinterModal, setShowWinterModal] = useState(false)
+  const [clickedContractAddress, setClickedContractAddress] = useState('undefined')
+  const [clickedTokenId, setClickedTokenId] = useState('1')
 
   // Reference: https://swr.vercel.app/examples/infinite-loading
   const mappedTokens = data ? data.flatMap(({ tokens }) => tokens) : []
@@ -79,7 +81,8 @@ const TokensGrid: FC<Props> = ({ tokens, viewRef, collectionImage }) => {
     >
       <WinterCheckout
         showModal={showWinterModal}
-        projectId= '102'
+        contractAddress={clickedContractAddress}
+        tokenId={clickedTokenId}
         production={false}
       />
       {isLoadingInitialData
@@ -193,6 +196,8 @@ const TokensGrid: FC<Props> = ({ tokens, viewRef, collectionImage }) => {
                               }}
                               onClick={() => {
                                 console.log('ENTER ADD TO CART')
+                                setClickedTokenId(token.tokenId)
+                                setClickedContractAddress(token.contract)
                                 setShowWinterModal(true)
                               }}
                               mutate={mutate}

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 const WinterCheckout: React.FC<{
   showModal: boolean;
-  projectId: string;
+  contractAddress?: string;
+  tokenId?: string;
   walletAddress?: string;
   email?: string;
   mintQuantity?: number;
@@ -16,7 +17,8 @@ const WinterCheckout: React.FC<{
   onSuccess?: (txId: string, email: string) => void;
 }> = ({
         showModal,
-        projectId,
+        contractAddress,
+        tokenId,
         walletAddress,
         email,
         mintQuantity,
@@ -59,7 +61,8 @@ const WinterCheckout: React.FC<{
   }, [onClose, onSuccess]);
 
   useEffect(() => {
-    let queryString = 'projectId=' + projectId;
+    let queryString = 'contractAddress=' + contractAddress;
+    queryString += '&tokenId=' + tokenId;
     if (walletAddress) {
       queryString += '&walletAddress=' + walletAddress;
     }
@@ -91,11 +94,12 @@ const WinterCheckout: React.FC<{
 
     const url = production
       ? 'https://checkout.usewinter.com/?' + queryString
-      : 'https://sandbox-winter-checkout.onrender.com/?' + queryString;
+      : 'https://sandbox-marketplace-nft-checkout.onrender.com/?' + queryString;
 
     setProjectUrl(url);
   }, [
-    projectId,
+    contractAddress,
+    tokenId,
     production,
     walletAddress,
     email,
