@@ -84,6 +84,9 @@ const TokensGrid: FC<Props> = ({ tokens, viewRef, collectionImage }) => {
         contractAddress={clickedContractAddress}
         tokenId={clickedTokenId}
         production={false}
+        onClose={() => {
+          setShowWinterModal(false)
+        }}
       />
       {isLoadingInitialData
         ? Array(10)
