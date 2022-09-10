@@ -49,9 +49,6 @@ const WinterCheckout: React.FC<{
         } else {
           if (e.data.name === 'closeWinterCheckoutModal') {
             onClose?.();
-          } else if (e.data.name === 'successfulWinterCheckout') {
-            onClose?.();
-            onSuccess?.(e.data.transactionhash, e.data.email);
           }
         }
       };
