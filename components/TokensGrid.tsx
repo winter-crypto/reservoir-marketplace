@@ -190,7 +190,7 @@ const TokensGrid: FC<Props> = ({ tokens, viewRef, collectionImage }) => {
                   
                   {token.floorAskPrice != null &&
                     token.floorAskPrice != undefined && (
-                      <div className="grid grid-cols-2">
+                      <div className="grid grid-cols-1">
                         {token &&
                           token.owner?.toLowerCase() !==
                             account?.address?.toLowerCase() && (
@@ -210,33 +210,33 @@ const TokensGrid: FC<Props> = ({ tokens, viewRef, collectionImage }) => {
                               buttonClassName="btn-primary-fill reservoir-subtitle flex h-[40px] items-center justify-center whitespace-nowrap rounded-none text-white focus:ring-0"
                             />
                           )}
-                        {isInCart ? (
-                          <button
-                            onClick={() => {
-                              const newCartTokens = [...cartTokens]
-                              const index = newCartTokens.findIndex(
-                                ({ contract, tokenId }) =>
-                                  contract === token?.contract &&
-                                  tokenId === token.tokenId
-                              )
-                              newCartTokens.splice(index, 1)
-                              setCartTokens(newCartTokens)
-                            }}
-                            className="reservoir-subtitle flex h-[40px] items-center justify-center border-t border-neutral-300 text-[#FF3B3B] disabled:cursor-not-allowed dark:border-neutral-600 dark:text-red-300"
-                          >
-                            Remove
-                          </button>
-                        ) : (
-                          <button
-                            disabled={isInTheWrongNetwork}
-                            onClick={() => {
-                              setCartTokens([...cartTokens, token])
-                            }}
-                            className="reservoir-subtitle flex h-[40px] items-center justify-center border-t border-neutral-300 disabled:cursor-not-allowed dark:border-neutral-600"
-                          >
-                            Add to Cart
-                          </button>
-                        )}
+                        {/*{isInCart ? (*/}
+                        {/*  <button*/}
+                        {/*    onClick={() => {*/}
+                        {/*      const newCartTokens = [...cartTokens]*/}
+                        {/*      const index = newCartTokens.findIndex(*/}
+                        {/*        ({ contract, tokenId }) =>*/}
+                        {/*          contract === token?.contract &&*/}
+                        {/*          tokenId === token.tokenId*/}
+                        {/*      )*/}
+                        {/*      newCartTokens.splice(index, 1)*/}
+                        {/*      setCartTokens(newCartTokens)*/}
+                        {/*    }}*/}
+                        {/*    className="reservoir-subtitle flex h-[40px] items-center justify-center border-t border-neutral-300 text-[#FF3B3B] disabled:cursor-not-allowed dark:border-neutral-600 dark:text-red-300"*/}
+                        {/*  >*/}
+                        {/*    Remove*/}
+                        {/*  </button>*/}
+                        {/*) : (*/}
+                        {/*  <button*/}
+                        {/*    disabled={isInTheWrongNetwork}*/}
+                        {/*    onClick={() => {*/}
+                        {/*      setCartTokens([...cartTokens, token])*/}
+                        {/*    }}*/}
+                        {/*    className="reservoir-subtitle flex h-[40px] items-center justify-center border-t border-neutral-300 disabled:cursor-not-allowed dark:border-neutral-600"*/}
+                        {/*  >*/}
+                        {/*    Add to Cart*/}
+                        {/*  </button>*/}
+                        {/*)}*/}
                       </div>
                     )}
                 </div>

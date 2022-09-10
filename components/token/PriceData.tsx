@@ -10,10 +10,11 @@ import TokenOfferModal from 'components/TokenOfferModal'
 import { recoilCartTokens } from 'components/TokensGrid'
 import useCollection from 'hooks/useCollection'
 import useDetails from 'hooks/useDetails'
-import React, { FC, ReactNode } from 'react'
+import React, { FC, ReactNode, useState } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { useAccount, useNetwork, useSigner } from 'wagmi'
 import { setToast } from './setToast'
+import WinterCheckout from '../WinterCheckout'
 
 const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID
 const SOURCE_ID = process.env.NEXT_PUBLIC_SOURCE_ID
@@ -33,6 +34,7 @@ const PriceData: FC<Props> = ({ details, collection }) => {
   const { data: signer } = useSigner()
   const { chain: activeChain } = useNetwork()
   const reservoirClient = useReservoirClient()
+  const [showWinterModal, setShowWinterModal] = useState(false)
 
   const token = details.data?.tokens?.[0]
 
@@ -87,6 +89,15 @@ const PriceData: FC<Props> = ({ details, collection }) => {
 
   return (
     <div className="col-span-full md:col-span-4 lg:col-span-5 lg:col-start-2">
+      <WinterCheckout
+        showModal={showWinterModal}
+        contractAddress={contract}
+        tokenId={tokenId}
+        production={process.env.WINTER_ENV == 'production' ? true : false }
+        onClose={() => {
+          setShowWinterModal(false)
+        }}
+      />
       <article className="col-span-full rounded-2xl border border-gray-300 bg-white p-6 dark:border-neutral-600 dark:bg-black">
         <div className="grid grid-cols-2 gap-6">
           <Price
@@ -169,6 +180,9 @@ const PriceData: FC<Props> = ({ details, collection }) => {
               signer={signer}
               isInTheWrongNetwork={isInTheWrongNetwork}
               mutate={details.mutate}
+              onClick={() => {
+                setShowWinterModal(true)
+              }}
             />
           )}
           {isInCart && !isOwner && (
@@ -190,31 +204,31 @@ const PriceData: FC<Props> = ({ details, collection }) => {
               </div>
             </button>
           )}
-          {!isInCart && !isOwner && isListed && (
-            <button
-              disabled={!token?.market?.floorAsk?.price}
-              onClick={() => {
-                if (tokenId && contract) {
-                  setCartTokens([
-                    ...cartTokens,
-                    {
-                      tokenId,
-                      contract,
-                      collection: { name: token.token?.collection?.name },
-                      image: token.token?.image,
-                      floorAskPrice: token.market?.floorAsk?.price,
-                      name: token.token?.name,
-                    },
-                  ])
-                }
-              }}
-              className="outline-none"
-            >
-              <div className="btn-primary-outline w-full px-[10px] dark:border-neutral-600 dark:text-white dark:ring-primary-900  dark:focus:ring-4">
-                Add to Cart
-              </div>
-            </button>
-          )}
+          {/*{!isInCart && !isOwner && isListed && (*/}
+          {/*  <button*/}
+          {/*    disabled={!token?.market?.floorAsk?.price}*/}
+          {/*    onClick={() => {*/}
+          {/*      if (tokenId && contract) {*/}
+          {/*        setCartTokens([*/}
+          {/*          ...cartTokens,*/}
+          {/*          {*/}
+          {/*            tokenId,*/}
+          {/*            contract,*/}
+          {/*            collection: { name: token.token?.collection?.name },*/}
+          {/*            image: token.token?.image,*/}
+          {/*            floorAskPrice: token.market?.floorAsk?.price,*/}
+          {/*            name: token.token?.name,*/}
+          {/*          },*/}
+          {/*        ])*/}
+          {/*      }*/}
+          {/*    }}*/}
+          {/*    className="outline-none"*/}
+          {/*  >*/}
+          {/*    <div className="btn-primary-outline w-full px-[10px] dark:border-neutral-600 dark:text-white dark:ring-primary-900  dark:focus:ring-4">*/}
+          {/*      Add to Cart blarg*/}
+          {/*    </div>*/}
+          {/*  </button>*/}
+          {/*)}*/}
           <AcceptOffer
             data={{
               collection: collection.data,
@@ -225,23 +239,23 @@ const PriceData: FC<Props> = ({ details, collection }) => {
             show={showAcceptOffer}
             signer={signer}
           />
-          {!isOwner && (
-            <TokenOfferModal
-              signer={signer}
-              data={{
-                collection: collection.data,
-                details,
-              }}
-              royalties={{
-                bps: collection.data?.collection?.royalties?.bps,
-                recipient: collection.data?.collection?.royalties?.recipient,
-              }}
-              env={{
-                chainId: +CHAIN_ID as ChainId,
-              }}
-              setToast={setToast}
-            />
-          )}
+          {/*{!isOwner && (*/}
+          {/*  <TokenOfferModal*/}
+          {/*    signer={signer}*/}
+          {/*    data={{*/}
+          {/*      collection: collection.data,*/}
+          {/*      details,*/}
+          {/*    }}*/}
+          {/*    royalties={{*/}
+          {/*      bps: collection.data?.collection?.royalties?.bps,*/}
+          {/*      recipient: collection.data?.collection?.royalties?.recipient,*/}
+          {/*    }}*/}
+          {/*    env={{*/}
+          {/*      chainId: +CHAIN_ID as ChainId,*/}
+          {/*    }}*/}
+          {/*    setToast={setToast}*/}
+          {/*  />*/}
+          {/*)}*/}
 
           <CancelOffer
             data={{
