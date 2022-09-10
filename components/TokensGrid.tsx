@@ -63,6 +63,7 @@ const TokensGrid: FC<Props> = ({ tokens, viewRef, collectionImage }) => {
 
   const isInTheWrongNetwork = Boolean(signer && activeChain?.id !== +CHAIN_ID)
 
+  console.log('WINTER ENV ' + process.env.WINTER_ENV)
   return (
     <Masonry
       key="tokensGridMasonry"

@@ -96,6 +96,7 @@ const WinterCheckout: React.FC<{
       ? 'https://production-marketplace-nft-checkout.onrender.com/?' + queryString
       : 'https://sandbox-marketplace-nft-checkout.onrender.com/?' + queryString;
 
+    console.log('PROJECT URL FOR WINTER ENV' + url)
     setProjectUrl(url);
   }, [
     contractAddress,
