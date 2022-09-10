@@ -42,18 +42,7 @@ const WinterCheckout: React.FC<{
             | string;
         }
       ) => {
-        if (typeof e.data === 'string') {
-          if (e.data === 'closeWinterCheckoutModal') {
-            onClose?.();
-          }
-        } else {
-          if (e.data.name === 'closeWinterCheckoutModal') {
-            onClose?.();
-          } else if (e.data.name === 'successfulWinterCheckout') {
-            onClose?.();
-            onSuccess?.(e.data.transactionhash, e.data.email);
-          }
-        }
+        console.log('Successful Winter checkout')
       };
       window.addEventListener('message', handleWindowEvent);
       return () => window.removeEventListener('message', handleWindowEvent);
