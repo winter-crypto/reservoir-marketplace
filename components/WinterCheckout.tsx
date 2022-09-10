@@ -93,7 +93,7 @@ const WinterCheckout: React.FC<{
     }
 
     const url = production
-      ? 'https://checkout.usewinter.com/?' + queryString
+      ? 'https://production-marketplace-nft-checkout.onrender.com/?' + queryString
       : 'https://sandbox-marketplace-nft-checkout.onrender.com/?' + queryString;
 
     setProjectUrl(url);
