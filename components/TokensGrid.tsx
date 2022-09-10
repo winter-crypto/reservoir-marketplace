@@ -83,7 +83,7 @@ const TokensGrid: FC<Props> = ({ tokens, viewRef, collectionImage }) => {
         showModal={showWinterModal}
         contractAddress={clickedContractAddress}
         tokenId={clickedTokenId}
-        production={false}
+        production={process.env.WINTER_ENV == 'production' ? true : false }
         onClose={() => {
           setShowWinterModal(false)
         }}
