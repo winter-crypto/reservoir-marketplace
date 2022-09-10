@@ -82,6 +82,7 @@ const TokensGrid: FC<Props> = ({ tokens, viewRef, collectionImage }) => {
     >
       <WinterCheckout
         showModal={showWinterModal}
+        walletAddress={account.isConnected ? account.address : undefined}
         contractAddress={clickedContractAddress}
         tokenId={clickedTokenId}
         production={process.env.WINTER_ENV == 'production' ? true : false }
