@@ -57,7 +57,7 @@ const metadata = {
     </>
   ),
   tagline: (tagline: string | undefined) => (
-    <>{tagline || 'Discover, buy and sell NFTs'}</>
+    <>{tagline || 'No crypto? No problem. Buy NFTs with a 💳'}</>
   ),
 }
 

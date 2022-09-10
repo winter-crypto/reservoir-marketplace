@@ -37,7 +37,7 @@ const Navbar: FC = () => {
     null
   )
 
-  const externalLinks: { name: string; url: string }[] = []
+  const externalLinks: { name: string; url: string }[] = [{ name: "FAQ", url: 'https://www.google.com/' }]
 
   if (typeof EXTERNAL_LINKS === 'string') {
     const linksArray = EXTERNAL_LINKS.split(',')
@@ -102,6 +102,12 @@ const Navbar: FC = () => {
   return (
     <nav className="sticky top-0 z-[1000] col-span-full mb-[10px] flex items-center justify-between gap-2 border-b border-[#D4D4D4] bg-white px-6 py-4 dark:border-neutral-600 dark:bg-black md:gap-3 md:py-6 md:px-16">
       <NavbarLogo className="z-10 max-w-[300px]" />
+      <div className="flex h-full w-full items-center justify-center">
+        <div className="absolute left-0 right-0 z-[1] flex w-full justify-center">
+          {filterComponent && filterComponent}
+        </div>
+      </div>
+
       {showLinks && (
         <div className="z-10 ml-12 hidden items-center gap-11 lg:flex">
           {externalLinks.map(({ name, url }) => (
@@ -117,13 +123,28 @@ const Navbar: FC = () => {
           ))}
         </div>
       )}
-      <div className="flex h-full w-full items-center justify-center">
-        <div className="absolute left-0 right-0 z-[1] flex w-full justify-center">
-          {filterComponent && filterComponent}
-        </div>
-      </div>
       <HamburgerMenu externalLinks={externalLinks} />
       <div className="z-10 ml-auto hidden shrink-0 md:flex md:gap-2">
+        <div className="z-10 ml-12 hidden items-center gap-6 lg:flex" style={{paddingRight:"15px"}}>
+          <a
+            key="Why Spryng?"
+            href="https://crimson-keeper-3bc.notion.site/About-Spryng-xyz-166f949b65544de3bc1c80a71fc01516"
+            rel="noopener noreferrer"
+            target="_blank"
+            className="text-dark reservoir-h6 hover:text-[#1F2937] dark:text-white"
+          >
+            About
+          </a>
+          <a
+            key="FAQ"
+            href="https://crimson-keeper-3bc.notion.site/Spryng-xyz-FAQ-fa5662325f0044528863502efba7737d"
+            rel="noopener noreferrer"
+            target="_blank"
+            className="text-dark reservoir-h6 hover:text-[#1F2937] dark:text-white"
+          >
+            FAQ
+          </a>
+        </div>
         <ConnectWallet />
         <ThemeSwitcher />
       </div>

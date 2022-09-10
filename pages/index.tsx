@@ -36,7 +36,7 @@ const metadata = {
     <meta name="description" content={description} />
   ),
   tagline: (tagline: string | undefined) => (
-    <>{tagline || 'Discover, buy and sell NFTs'}</>
+    <>{tagline || 'No crypto? No problem. Buy NFTs with a 💳'}</>
   ),
   image: (image?: string) => {
     if (image) {
