@@ -112,7 +112,7 @@ const Navbar: FC = () => {
   return (
     <nav className="sticky top-0 z-[1000] col-span-full mb-[10px] flex items-center justify-between gap-2 border-b border-[#D4D4D4] bg-white px-6 py-4 dark:border-neutral-600 dark:bg-black md:gap-3 md:py-6 md:px-16">
       <NavbarLogo className="z-10 max-w-[300px]" />
-      <div className="flex h-full w-full items-center align-left">
+      <div className="flex h-full w-full items-center align-left" style={{paddingLeft:"30px"}}>
         <div className="left-0 right-0 z-[1] flex w-full">
           {filterComponent && filterComponent}
         </div>
