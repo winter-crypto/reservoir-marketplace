@@ -37,7 +37,17 @@ const Navbar: FC = () => {
     null
   )
 
-  const externalLinks: { name: string; url: string }[] = [{ name: "FAQ", url: 'https://www.google.com/' }]
+  const externalLinks: { name: string; url: string }[] = [{
+    name: 'About',
+    url: 'https://crimson-keeper-3bc.notion.site/About-Spryng-xyz-166f949b65544de3bc1c80a71fc01516'
+  },
+    {
+      name: 'Team',
+      url: 'https://crimson-keeper-3bc.notion.site/The-Team-behind-Spryng-xyz-c4bb4075d7b84d4687b26b49b9f88167'
+    }, {
+      name: 'FAQ',
+      url: 'https://crimson-keeper-3bc.notion.site/Spryng-xyz-FAQ-fa5662325f0044528863502efba7737d'
+    }]
 
   if (typeof EXTERNAL_LINKS === 'string') {
     const linksArray = EXTERNAL_LINKS.split(',')
@@ -102,8 +112,8 @@ const Navbar: FC = () => {
   return (
     <nav className="sticky top-0 z-[1000] col-span-full mb-[10px] flex items-center justify-between gap-2 border-b border-[#D4D4D4] bg-white px-6 py-4 dark:border-neutral-600 dark:bg-black md:gap-3 md:py-6 md:px-16">
       <NavbarLogo className="z-10 max-w-[300px]" />
-      <div className="flex h-full w-full items-center justify-center">
-        <div className="absolute left-0 right-0 z-[1] flex w-full justify-center">
+      <div className="flex h-full w-full items-center align-left">
+        <div className="left-0 right-0 z-[1] flex w-full">
           {filterComponent && filterComponent}
         </div>
       </div>
@@ -136,6 +146,15 @@ const Navbar: FC = () => {
             About
           </a>
           <a
+            key="Team"
+            href="https://crimson-keeper-3bc.notion.site/The-Team-behind-Spryng-xyz-c4bb4075d7b84d4687b26b49b9f88167"
+            rel="noopener noreferrer"
+            target="_blank"
+            className="text-dark reservoir-h6 hover:text-[#1F2937] dark:text-white"
+          >
+            Team
+          </a>
+          <a
             key="FAQ"
             href="https://crimson-keeper-3bc.notion.site/Spryng-xyz-FAQ-fa5662325f0044528863502efba7737d"
             rel="noopener noreferrer"
@@ -148,7 +167,7 @@ const Navbar: FC = () => {
         <ConnectWallet />
         <ThemeSwitcher />
       </div>
-      <CartMenu />
+      {/*<CartMenu />*/}
     </nav>
   )
 }
