@@ -30,6 +30,7 @@ import * as Tabs from '@radix-ui/react-tabs'
 import { toggleOnItem } from 'lib/router'
 import CollectionActivityTable from 'components/tables/CollectionActivityTable'
 import Sweep from 'components/Sweep'
+import Script from 'next/script'
 
 // Environment variables
 // For more information about these variables
@@ -179,6 +180,16 @@ const Home: NextPage<Props> = ({ fallback, id }) => {
           {description}
           {image}
         </Head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-70G4T8D937"></script>
+        <Script id='google-analytics' strategy='afterInteractive'>
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-70G4T8D937');
+        `}
+        </Script>
         <Hero collectionId={id} fallback={fallback} />
         <Tabs.Root
           value={router.query?.tab?.toString() || 'items'}

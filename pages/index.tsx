@@ -8,6 +8,7 @@ import SortTrendingCollections from 'components/SortTrendingCollections'
 import { useMediaQuery } from '@react-hookz/web'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import Script from 'next/script'
 
 // Environment variables
 // For more information about these variables
@@ -82,6 +83,16 @@ const Home: NextPage<Props> = ({ fallback }) => {
         {description}
         {image}
       </Head>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-70G4T8D937"></script>
+      <Script id='google-analytics' strategy='afterInteractive'>
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-70G4T8D937');
+        `}
+      </Script>
       <header className="col-span-full mb-12 mt-[66px] px-4 md:mt-40 lg:px-0">
         <h1 className="reservoir-h1 text-center dark:text-white">{tagline}</h1>
       </header>
