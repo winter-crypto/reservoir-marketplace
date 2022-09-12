@@ -32,7 +32,7 @@ const COLLECTION_SET_ID = process.env.NEXT_PUBLIC_COLLECTION_SET_ID
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 const metadata = {
-  title: (title: string) => <title>{title}</title>,
+  title: (title: string) => <title>Spryng - Buy NFTs with a credit card</title>,
   description: (description: string) => (
     <meta name="description" content={description} />
   ),
@@ -93,8 +93,11 @@ const Home: NextPage<Props> = ({ fallback }) => {
           gtag('config', 'G-70G4T8D937');
         `}
       </Script>
-      <header className="col-span-full mb-12 mt-[66px] px-4 md:mt-40 lg:px-0">
-        <h1 className="reservoir-h1 text-center dark:text-white">{tagline}</h1>
+      <header className="col-span-full mb-12 mt-[66px] px-4 md:mt-10 lg:px-0">
+        <h1 className="reservoir-h1 text-center dark:text-white">No crypto? No problem.</h1>
+        <h1 className="reservoir-h1 text-center dark:text-white">Buy NFTs with a 💳</h1>
+        <h4 className="reservoir-h4 text-center dark:text-white">We get you the best prices from the best places.</h4>
+        <h5 className="reservoir-h5 text-center dark:text-white">NFTs sourced from OpenSea, LooksRare, and x2y2.</h5>
       </header>
       <div className="col-span-full px-6 md:px-16">
         <div className="mb-9 flex w-full items-center justify-between">
