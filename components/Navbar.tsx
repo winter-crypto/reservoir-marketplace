@@ -47,6 +47,9 @@ const Navbar: FC = () => {
     }, {
       name: 'FAQ',
       url: 'https://crimson-keeper-3bc.notion.site/Spryng-xyz-FAQ-fa5662325f0044528863502efba7737d'
+    }, {
+      name: 'Discord',
+      url: 'https://discord.gg/b9RR3RCq7X'
     }]
 
   if (typeof EXTERNAL_LINKS === 'string') {
@@ -162,6 +165,15 @@ const Navbar: FC = () => {
             className="text-dark reservoir-h6 hover:text-[#1F2937] dark:text-white"
           >
             FAQ
+          </a>
+          <a
+            key="Discord"
+            href="https://discord.gg/b9RR3RCq7X"
+            rel="noopener noreferrer"
+            target="_blank"
+            className="text-dark reservoir-h6 hover:text-[#1F2937] dark:text-white"
+          >
+            Discord
           </a>
         </div>
         <ConnectWallet />
