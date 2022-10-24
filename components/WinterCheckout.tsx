@@ -98,7 +98,7 @@ const WinterCheckout: React.FC<{
       process.env.NEXT_PUBLIC_WINTER_ENV === 'local'
         ? 'http://localhost:3002/?' + queryString
         : production
-        ? 'https://checkout.usewinter.com//?' + queryString
+        ? 'https://checkout.usewinter.com/?' + queryString
         : 'https://sandbox-winter-checkout.onrender.com/?' + queryString
 
     setProjectUrl(url)
