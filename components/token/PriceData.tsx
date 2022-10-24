@@ -91,10 +91,13 @@ const PriceData: FC<Props> = ({ details, collection }) => {
     <div className="col-span-full md:col-span-4 lg:col-span-5 lg:col-start-2">
       <WinterCheckout
         showModal={showWinterModal}
-        walletAddress={accountData.isConnected ? accountData.address : undefined}
+        walletAddress={
+          accountData.isConnected ? accountData.address : undefined
+        }
         contractAddress={contract}
         tokenId={tokenId}
-        production={process.env.WINTER_ENV == 'production' ? true : false }
+        production={process.env.WINTER_ENV == 'production' ? true : false}
+        fillSource="Spryng.xyz"
         onClose={() => {
           setShowWinterModal(false)
         }}
