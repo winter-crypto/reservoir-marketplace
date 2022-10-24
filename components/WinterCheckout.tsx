@@ -101,7 +101,6 @@ const WinterCheckout: React.FC<{
         ? 'https://checkout.usewinter.com//?' + queryString
         : 'https://sandbox-winter-checkout.onrender.com/?' + queryString
 
-    console.log('PROJECT URL FOR WINTER ENV ' + url)
     setProjectUrl(url)
   }, [
     contractAddress,
