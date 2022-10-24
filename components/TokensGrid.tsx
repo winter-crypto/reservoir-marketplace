@@ -48,7 +48,8 @@ const TokensGrid: FC<Props> = ({ tokens, viewRef, collectionImage }) => {
   const account = useAccount()
   const reservoirClient = useReservoirClient()
   const [showWinterModal, setShowWinterModal] = useState(false)
-  const [clickedContractAddress, setClickedContractAddress] = useState('undefined')
+  const [clickedContractAddress, setClickedContractAddress] =
+    useState('undefined')
   const [clickedTokenId, setClickedTokenId] = useState('1')
 
   // Reference: https://swr.vercel.app/examples/infinite-loading
@@ -63,7 +64,6 @@ const TokensGrid: FC<Props> = ({ tokens, viewRef, collectionImage }) => {
 
   const isInTheWrongNetwork = Boolean(signer && activeChain?.id !== +CHAIN_ID)
 
-  console.log('WINTER ENV ' + process.env.WINTER_ENV)
   return (
     <Masonry
       key="tokensGridMasonry"
@@ -85,7 +85,8 @@ const TokensGrid: FC<Props> = ({ tokens, viewRef, collectionImage }) => {
         walletAddress={account.isConnected ? account.address : undefined}
         contractAddress={clickedContractAddress}
         tokenId={clickedTokenId}
-        production={process.env.WINTER_ENV == 'production' ? true : false }
+        production={process.env.WINTER_ENV == 'production' ? true : false}
+        fillSource="Spryng.xyz"
         onClose={() => {
           setShowWinterModal(false)
         }}
@@ -188,7 +189,7 @@ const TokensGrid: FC<Props> = ({ tokens, viewRef, collectionImage }) => {
                       )}
                     </div>
                   </div>
-                  
+
                   {token.floorAskPrice != null &&
                     token.floorAskPrice != undefined && (
                       <div className="grid grid-cols-1">
